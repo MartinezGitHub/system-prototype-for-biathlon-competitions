@@ -64,7 +64,6 @@ func (b *biathlonImpl) ProcessStart(event entity.Event) error {
 		return err
 	}
 	competitor.CurrentLap = 0
-	//competitor.StartTime = event.Time
 	lapTime := entity.LapTime{
 		Number:       0,
 		Time:         event.Time,
@@ -92,8 +91,6 @@ func (b *biathlonImpl) ProcessFinishLap(event entity.Event) error {
 
 	lapTime.Time = base.Add(diff)
 
-	//penalty := competitor.Penalties[len(competitor.Penalties)-1]
-	//fmt.Println(penalty.ValueOfMissedShots)
 	lapTime.AverageSpeed = float64(b.config.LapLen) / seconds
 
 	err = b.competitorRepository.MarkAsRacing(event.CompetitorID)

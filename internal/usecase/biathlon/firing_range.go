@@ -57,7 +57,6 @@ func (b *biathlonImpl) ProcessLeaveShootingRange(event entity.Event) error {
 		AverageSpeed:       0,
 	}
 
-	//competitor.PenaltyLen = b.config.PenaltyLen * (5 - competitor.SucceedShotsOnCurrentLap)
 	err = b.competitorRepository.AddPenalty(event.CompetitorID, &penalty)
 	if err != nil {
 		return err
@@ -69,7 +68,3 @@ func (b *biathlonImpl) ProcessLeaveShootingRange(event entity.Event) error {
 	}
 	return nil
 }
-
-//func (b *biathlonImpl) CalculateMissedShots(competitorID int) (int, error) {
-//	return 0, nil
-//}

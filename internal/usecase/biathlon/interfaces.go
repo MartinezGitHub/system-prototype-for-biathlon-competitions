@@ -19,8 +19,6 @@ type (
 	PenaltyUseCase interface {
 		ProcessEnterPenalty(event entity.Event) error
 		ProcessLeavePenalty(event entity.Event) error
-
-		CalculatePenaltyTime(competitorID int) (time.Duration, error)
 	}
 
 	FiringRangeUseCase interface {
@@ -86,12 +84,3 @@ func parseCustomDuration(durationStr string) (time.Duration, error) {
 	totalSeconds := hours*3600 + minutes*60 + seconds
 	return time.Duration(totalSeconds) * time.Second, nil
 }
-
-//func formatDuration(d time.Duration) string {
-//	hours := int(d.Hours())
-//	minutes := int(d.Minutes()) % 60
-//	seconds := int(d.Seconds()) % 60
-//	milliseconds := (d.Nanoseconds() % 1e9) / 1e6
-//
-//	return fmt.Sprintf("[%02d:%02d:%02d.%03d]", hours, minutes, seconds, milliseconds)
-//}

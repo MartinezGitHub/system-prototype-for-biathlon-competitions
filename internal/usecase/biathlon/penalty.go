@@ -41,7 +41,3 @@ func (b *biathlonImpl) ProcessLeavePenalty(event entity.Event) error {
 
 	return nil
 }
-
-func (b *biathlonImpl) CalculatePenaltyTime(competitorID int) (time.Duration, error) {
-	return time.Duration(0), nil
-}
